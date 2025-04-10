@@ -13,7 +13,7 @@
 
 ## ディレクトリ構成
 
-'''bash
+```bash
 /usr/local/bin/notify_system/ 
 ├── app.py 
 ├── device_monitor.py 
@@ -22,11 +22,9 @@
     ├── deviceA.yml
     ├── deviceB.yml
     └── deviceMatlab.yml
-'''
-
+```
 
 ---
-
 ## MATLAB ログ出力例
 
 ```matlab
