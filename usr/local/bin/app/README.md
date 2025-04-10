@@ -13,7 +13,7 @@
 
 ## ディレクトリ構成
 
-'''
+'''bash
 /usr/local/bin/notify_system/ 
 ├── app.py 
 ├── device_monitor.py 
