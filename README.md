@@ -104,6 +104,7 @@
 ```
 ├─ README.md                    # ポートフォリオ概要（本ドキュメント）
 ├─ device-log-notifier/         # 装置ログ監視・通知システム (Python + cron)
+├─ ec-inventory                 # Java+SpringbootでのECサイト仮実装
 ```
 
 ### `device-log-notifier/`
