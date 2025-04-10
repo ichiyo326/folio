@@ -55,7 +55,7 @@
 | 分類                     | 技術・ツール                                                                            |
 | ------------------------ | --------------------------------------------------------------------------------------- |
 | **プログラミング言語**    | Java（3年以上）, JavaScript（3年以上）, SQL（MySQL 2年）, Python／C++／MATLAB（研究・演習で3年以上） |
-| **フレームワーク / ライブラリ** | Spring Boot, JUnit, Kotlin Coroutines, VB.NET, NumPy/SciPy, Slack API |
+| **フレームワーク / ライブラリ** | Spring Boot, JUnit, VB.NET, NumPy/SciPy, Slack API |
 | **データベース / ツール**| MySQL, Git, GitHub, Linux(Cron), AWS（EC2, RDS）                                          |
 | **その他**               | REST API設計, Ajax(非同期通信), トランザクション・ロック制御, データ移行 (VBによるスクリプト開発)     |
 
@@ -65,9 +65,9 @@
 
 ### ECサイト在庫管理APIの開発
 - **概要:**  
-  Kotlin/Java (Spring Boot) を用いたECサイト向け在庫管理APIを開発。複数ユーザーの同時アクセスでも在庫数がずれないよう、トランザクションと排他制御を実装。
+  Java (Spring Boot) を用いたECサイト向け在庫管理APIを開発。複数ユーザーの同時アクセスでも在庫数がずれないよう、トランザクションと排他制御を実装。
 - **技術:**  
-  Spring Boot, Kotlin Coroutines, MySQLトランザクション制御, 楽観／悲観ロック, JUnitテスト
+  Spring Boot, MySQLトランザクション制御, 楽観／悲観ロック, JUnitテスト
 - **成果:**  
   注文ステップ40%削減、在庫不整合ゼロ達成、キャンセル率の低減
 
@@ -103,22 +103,12 @@
 
 ```
 ├─ README.md                    # ポートフォリオ概要（本ドキュメント）
-├─ ec-inventory-api/            # ECサイト在庫管理API (Kotlin/Java + Spring)
 ├─ device-log-notifier/         # 装置ログ監視・通知システム (Python + cron)
-└─ speech-separation-research/  # 音声分離研究 (MATLAB/Python)
 ```
-
-### `ec-inventory-api/`
-Kotlin/Java (Spring Boot) で構成したバックエンドAPIの簡易サンプルや設計ドキュメントを掲載。  
-RESTエンドポイント設計、トランザクション／排他制御の実装例、テストコードなどを含む。
 
 ### `device-log-notifier/`
 Pythonスクリプトとcron設定例、Slack APIとの連携用コードを掲載。  
 ログファイル監視・リアルタイム通知システムの構成と設定例も含む。
-
-### `speech-separation-research/`
-音声分離のための信号処理コード（MATLAB・Python）や、SDR／SNR評価用スクリプトの抜粋。  
-研究成果の要点と、検証に使用したコード・構成を一部公開。
 
 ---
 
