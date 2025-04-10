@@ -1,0 +1,4 @@
+device_name: "deviceA"
+log_file_path: "/var/log/deviceA.log"
+offset_file_path: "/tmp/deviceA_offsetA.dat"
+pattern: "(ERROR|FAIL|DONE)"
