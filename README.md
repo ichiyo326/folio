@@ -83,7 +83,7 @@
 - **概要:**  
   ICAとSTFTを活用し、混合音声から各話者の声を分離。SNR/SDR/話者識別率を改善し、実環境下での認識精度向上を実現。
 - **技術:**  
-  MATLAB, Python, 音響信号処理, ICA, SD/DR/SNR評価, GitLab活用
+  MATLAB, Python, 音響信号処理, ICA, SDR/SNR評価, GitLab活用
 - **成果:**  
   SNRを18→20.5dBに向上、話者識別率82%、分離精度を定量的に評価可能に
 
