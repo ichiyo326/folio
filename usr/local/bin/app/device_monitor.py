@@ -1,11 +1,9 @@
 #!/usr/bin/env python3
-
 import os
 import re
 import smtplib
 from email.message import EmailMessage
 from typing import List
-
 
 class DeviceMonitor:
     def __init__(
@@ -40,6 +38,7 @@ class DeviceMonitor:
         print(f"[DEBUG] Saved offset={new_offset}, device={self.device_name}")
 
     def monitor_log(self) -> List[str]:
+        """ログファイルを監視してパターンにマッチする行を返す"""
         if not os.path.exists(self.log_file_path):
             print(f"[DEBUG] Log file not found. path={self.log_file_path}")
             return []
@@ -50,8 +49,8 @@ class DeviceMonitor:
         with open(self.log_file_path, "r", encoding="utf-8", errors="replace") as log_file:
             log_file.seek(self.offset)
             for line in log_file:
-                line_encoded = line.encode("utf-8", errors="replace")
-                new_offset += len(line_encoded)
+                encoded = line.encode("utf-8", errors="replace")
+                new_offset += len(encoded)
                 if self.pattern.search(line):
                     matched_lines.append(line.strip())
 

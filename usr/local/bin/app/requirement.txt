@@ -1,3 +1,2 @@
-# メール送信は標準ライブラリsmtplibで対応可能
-# YAMLの読み込みにPyYAMLを使用
+# YAMLの読み込みにPyYAMLを利用
 PyYAML==6.0
