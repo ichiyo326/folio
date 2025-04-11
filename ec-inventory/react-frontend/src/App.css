@@ -1,13 +1,7 @@
-/* Appコンポーネント用のスタイル例 */
-.App {
-    margin: 0;
-    padding: 0;
-    font-family: sans-serif;
-  }
-  
-  /* 見出し要素の例 */
-  h1 {
-    font-size: 24px;
-    margin-bottom: 16px;
+/* src/App.css */
+/* 必要最小限 */
+
+.container {
+    max-width: 1140px; /* Bootstrap上書きではなく、例として */
   }
   

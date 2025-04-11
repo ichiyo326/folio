@@ -19,14 +19,12 @@ public class PurchaseServiceTest {
 
     @Test
     void purchaseSingleTest() {
-        // テスト用に商品登録
         Product product = new Product();
         product.setId(999L);
         product.setName("TestProduct");
         product.setStock(10);
         productRepository.save(product);
 
-        // 在庫10 -> 購入5 -> 在庫5
         purchaseService.purchaseSingle(999L, 1L, 5);
         Product updated = productRepository.findById(999L).orElseThrow();
         Assertions.assertEquals(5, updated.getStock());

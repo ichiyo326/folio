@@ -2,7 +2,7 @@ import React from 'react';
 
 function Footer() {
   return (
-    <div
+    <footer
       style={{
         marginTop: '40px',
         paddingTop: '20px',
@@ -11,7 +11,7 @@ function Footer() {
       }}
     >
       <p>© 2025 Sample Inc. ver 1.0.0</p>
-    </div>
+    </footer>
   );
 }
 
