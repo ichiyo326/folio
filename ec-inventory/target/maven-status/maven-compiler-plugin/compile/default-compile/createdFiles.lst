@@ -1,0 +1,11 @@
+com\example\ecinventory\controller\PurchaseRequest.class
+com\example\ecinventory\repository\OrderRepository.class
+com\example\ecinventory\EcinventoryApplication.class
+com\example\ecinventory\entity\OrderItem.class
+com\example\ecinventory\repository\ProductRepository.class
+com\example\ecinventory\entity\Order.class
+com\example\ecinventory\controller\ProductController.class
+com\example\ecinventory\repository\OrderItemRepository.class
+com\example\ecinventory\controller\PurchaseController.class
+com\example\ecinventory\service\PurchaseService.class
+com\example\ecinventory\entity\Product.class

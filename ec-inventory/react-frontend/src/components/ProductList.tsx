@@ -1,6 +1,9 @@
 import React, { useEffect, useState } from 'react';
 import { Product } from '../types/types';
 
+// React-Bootstrapの読み込み
+import { Card, Button } from 'react-bootstrap';
+
 function ProductList() {
   const [products, setProducts] = useState<Product[]>([]);
 
@@ -21,12 +24,14 @@ function ProductList() {
   }, []);
 
   const addToCart = (productId: number) => {
-    let currentCart = localStorage.getItem('cart');
-    let cartData: { productId: number; quantity: number }[] = currentCart
-      ? JSON.parse(currentCart)
-      : [];
+    const currentCart = localStorage.getItem('cart');
+    const cartData: { productId: number; quantity: number }[] =
+      currentCart ? JSON.parse(currentCart) : [];
 
-    const existingIndex = cartData.findIndex((item) => item.productId === productId);
+    const existingIndex = cartData.findIndex(
+      (item) => item.productId === productId
+    );
+
     if (existingIndex >= 0) {
       cartData[existingIndex].quantity += 1;
     } else {
@@ -38,16 +43,23 @@ function ProductList() {
   };
 
   return (
-    <div>
-      <h2>商品一覧</h2>
-      <ul>
-        {products.map((p) => (
-          <li key={p.id}>
-            {p.name} (在庫: {p.stock}){' '}
-            <button onClick={() => addToCart(p.id)}>カートに入れる</button>
-          </li>
-        ))}
-      </ul>
+    <div className="row">
+      {products.map((p) => (
+        <div key={p.id} className="col-sm-6 col-md-4 col-lg-3 mb-3">
+          <Card>
+            <Card.Body>
+              <Card.Title>{p.name}</Card.Title>
+              <Card.Text>在庫: {p.stock}</Card.Text>
+              <Button
+                variant="primary"
+                onClick={() => addToCart(p.id)}
+              >
+                カートに入れる
+              </Button>
+            </Card.Body>
+          </Card>
+        </div>
+      ))}
     </div>
   );
 }

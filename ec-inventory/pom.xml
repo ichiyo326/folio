@@ -15,9 +15,10 @@
     <parent>
         <groupId>org.springframework.boot</groupId>
         <artifactId>spring-boot-starter-parent</artifactId>
-        <version>${spring.boot.version}</version>
-        <relativePath/>
+        <version>3.2.5</version> <!-- ← ここを明示的に記述 -->
+        <relativePath/> <!-- lookup parent from repository -->
     </parent>
+
 
     <dependencies>
         <!-- Spring Web -->

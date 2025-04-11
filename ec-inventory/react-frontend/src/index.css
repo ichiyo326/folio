@@ -1,0 +1,12 @@
+/* index.tsxで読み込まれるスタイル例 */
+
+body {
+    margin: 0;
+    padding: 0;
+    font-family: sans-serif;
+  }
+  
+  #root {
+    margin: 16px;
+  }
+  
