@@ -1,2 +1,3 @@
 # YAMLの読み込みにPyYAMLを利用
 PyYAML==6.0
++psutil==5.9.8

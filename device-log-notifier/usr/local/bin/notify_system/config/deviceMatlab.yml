@@ -2,3 +2,5 @@ device_name: "deviceMatlab"
 log_file_path: "/shared/logs/matlab_experiment.log"
 offset_file_path: "/tmp/deviceMatlab_offset.dat"
 pattern: "(Start MATLAB experiment|End MATLAB experiment|ERROR)"
+pid_file_path: "/tmp/matlab.pid"          
+collect_resource: true                    
