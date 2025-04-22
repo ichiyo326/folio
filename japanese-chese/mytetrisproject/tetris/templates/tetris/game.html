@@ -1,0 +1,47 @@
+{% load static %}
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title>Web Tetris</title>
+    <script src="{% static 'tetris/js/tetris.js' %}"></script>
+    <style>
+      #gameCanvas {
+        border: 1px solid #000;
+        display: block;
+        margin: 20px auto;
+      }
+      #score {
+        text-align: center;
+        font-size: 24px;
+      }
+      #controls {
+        text-align: center;
+      }
+    </style>
+</head>
+<body>
+
+  <div id="controls" style="text-align:center; margin-top:10px;">
+    <button onclick="startGame()">Start</button>
+    <button id="speed-slow">Slow</button>
+    <button id="speed-normal">Normal</button>
+    <button id="speed-fast">Fast</button>
+  </div>
+
+  <canvas id="gameCanvas" width="240" height="480"></canvas>
+  <div id="score">Score: 0</div>
+
+  <div id="instructions" style="text-align:center; margin-top:20px; font-size:14px;">
+    <p><strong>操作方法：</strong></p>
+    <ul style="list-style:none; padding:0;">
+      <li>← / → ：左右移動</li>
+      <li>↓ ：1段下に移動</li>
+      <li>↑ ：回転</li>
+      <li>Enter：一気に落下（ハードドロップ）</li>
+      <li>&lt; / &gt; ：現在のミノを変更</li>
+    </ul>
+  </div>
+
+</body>
+</html>
