@@ -1,0 +1,7 @@
+[Unit]
+Description=Notify System Service
+[Service]
+ExecStart=/usr/bin/python3 /opt/notify_system/bin/app.py
+StandardOutput=append:/opt/notify_system/log/notify_system.log
+StandardError=append:/opt/notify_system/log/notify_system.log
+Restart=always

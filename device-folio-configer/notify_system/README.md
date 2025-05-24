@@ -18,7 +18,6 @@
 
 ## ディレクトリ構成
 
-```bash
 /usr/local/bin/notify_system/
 ├── app.py
 ├── device_monitor.py   # psutil によるリソース監視を実装
@@ -27,13 +26,11 @@
     ├── deviceA.yml
     ├── deviceB.yml
     └── deviceMatlab.yml
-```
 
 ---
 
 ## MATLAB ログ出力例
 
-```matlab
 % experiment_run.m
 logFile = '/shared/logs/matlab_experiment.log';
 fid = fopen(logFile, 'a');
@@ -41,13 +38,11 @@ fprintf(fid, '[INFO] Start MATLAB experiment: %s\n', datestr(now, 'yyyy-mm-dd HH
 pause(10);
 fprintf(fid, '[INFO] End MATLAB experiment: %s\n', datestr(now, 'yyyy-mm-dd HH:MM:SS'));
 fclose(fid);
-```
 
 ---
 
 ## YAML 設定例（deviceMatlab.yml）
 
-```yaml
 device_name: "deviceMatlab"
 log_file_path: "/shared/logs/matlab_experiment.log"
 offset_file_path: "/tmp/deviceMatlab_offset.dat"
@@ -55,7 +50,6 @@ pattern: "(Start MATLAB experiment|End MATLAB experiment|ERROR)"
 # --- 以下 2 行が追加キー ---
 pid_file_path: "/tmp/matlab.pid"          # MATLAB 起動スクリプトで出力する PID ファイル
 collect_resource: true                     # true で CPU / メモリ / 経過秒を取得
-```
 
 * `pid_file_path` : MATLAB 起動時に `echo $! > /tmp/matlab.pid` で生成してください。
 * `collect_resource` : true の場合、通知メールに `[RES] pid=... cpu_sec=... rss=... elapsed_sec=...]` が追記されます。
@@ -64,46 +58,34 @@ collect_resource: true                     # true で CPU / メモリ / 経過�
 
 ## セットアップ手順
 
-### 1. Python 環境インストール
+1. Python 環境インストール
 
-```bash
 sudo apt-get update
 sudo apt-get install -y python3 python3-pip
-```
 
-### 2. ライブラリインストール
+2. ライブラリインストール
 
-`requirements.txt` に `psutil` を追加済みです。
-
-```bash
 cd /usr/local/bin/notify_system
 sudo pip3 install -r requirements.txt
-```
 
-### 3. 権限設定
+3. 権限設定
 
-```bash
 sudo chmod +x /usr/local/bin/notify_system/app.py
 sudo chown user:user /shared/logs/matlab_experiment.log
 sudo touch /tmp/deviceMatlab_offset.dat /tmp/matlab.pid
 sudo chown user:user /tmp/deviceMatlab_offset.dat /tmp/matlab.pid
-```
 
 ---
 
 ## MATLAB プロセス起動例（PID ファイル生成）
 
-```bash
 nohup matlab -batch experiment_run.m & echo $! > /tmp/matlab.pid
-```
 
 ---
 
 ## 動作確認（手動実行）
 
-```bash
 /usr/bin/python3 /usr/local/bin/notify_system/app.py
-```
 
 メール本文にログ行と `[RES] ...` 行が含まれていれば成功です。
 
@@ -113,18 +95,14 @@ nohup matlab -batch experiment_run.m & echo $! > /tmp/matlab.pid
 
 ### cron（30 秒間隔）
 
-```bash
 crontab -e
 * * * * * /usr/bin/python3 /usr/local/bin/notify_system/app.py >> /var/log/notify_system.log 2>&1
 * * * * * sleep 30; /usr/bin/python3 /usr/local/bin/notify_system/app.py >> /var/log/notify_system.log 2>&1
-```
 
 ### systemd.timer（30 秒間隔厳密実行）
 
-<details>
-<summary>/etc/systemd/system/notify_system.service</summary>
+/etc/systemd/system/notify_system.service
 
-```ini
 [Unit]
 Description=Notify System Service
 
@@ -136,14 +114,9 @@ Restart=always
 
 [Install]
 WantedBy=multi-user.target
-```
 
-</details>
+/etc/systemd/system/notify_system.timer
 
-<details>
-<summary>/etc/systemd/system/notify_system.timer</summary>
-
-```ini
 [Unit]
 Description=Notify System Timer
 
@@ -154,14 +127,9 @@ Unit=notify_system.service
 
 [Install]
 WantedBy=multi-user.target
-```
 
-</details>
-
-```bash
 sudo systemctl enable notify_system.service notify_system.timer
 sudo systemctl start notify_system.timer
-```
 
 ---
 
@@ -196,7 +164,5 @@ sudo systemctl start notify_system.timer
 
 ## 保存場所推奨
 
-```bash
 /usr/local/bin/notify_system/README.md
-```
-
+    

@@ -1,14 +1,3 @@
-#!/usr/bin/env python3
-"""Device log + resource monitor
-
-変更点
-- psutil で CPU 時間・RSS・経過秒を取得する機能を追加
-- `pid_file_path`, `collect_resource` を __init__ で受け取る
-- 取得したリソース統計を `[RES] ...` 形式の疑似ログ行として matched_lines に追加
-"""
-
-from __future__ import annotations
-
 import os
 import re
 import smtplib
@@ -20,7 +9,7 @@ import psutil
 
 
 class DeviceMonitor:
-    """1 つの装置のログ + リソース監視を担当するクラス"""
+    """指定装置のログ監視とリソース統計取得を行う"""
 
     def __init__(
         self,
@@ -37,48 +26,33 @@ class DeviceMonitor:
         self.pattern = re.compile(pattern_str)
         self.pid_file_path = pid_file_path
         self.collect_resource = collect_resource
-
         self.offset = 0
 
-    # ------------------------------------------------------------------
-    # offset helpers
-    # ------------------------------------------------------------------
     def read_offset(self) -> None:
-        """最後に読み込んだファイル位置を offset_file から取得"""
         if not os.path.exists(self.offset_file_path):
             self.offset = 0
-            print(f"[DEBUG] Offset file not found. device={self.device_name}")
+            print(f"[DEBUG] Offset file not found: {self.offset_file_path}")
             return
-
         with open(self.offset_file_path, "r") as f:
             offset_str = f.read().strip()
             self.offset = int(offset_str) if offset_str.isdigit() else 0
         print(f"[DEBUG] Read offset={self.offset}, device={self.device_name}")
 
     def save_offset(self, new_offset: int) -> None:
-        """最新の読み込み位置を offset_file に保存"""
         with open(self.offset_file_path, "w") as f:
             f.write(str(new_offset))
         print(f"[DEBUG] Saved offset={new_offset}, device={self.device_name}")
 
-    # ------------------------------------------------------------------
-    # main logic
-    # ------------------------------------------------------------------
     def _resource_line(self) -> str | None:
-        """PID ファイルがあればリソース統計を取得して文字列にして返す"""
         if not (self.collect_resource and self.pid_file_path):
             return None
         if not os.path.exists(self.pid_file_path):
             return "[RES] pid_file_absent"
-
-        # read pid
         try:
             with open(self.pid_file_path) as f:
                 pid = int(f.read().strip())
         except (ValueError, OSError):
             return "[RES] pid_read_error"
-
-        # query process
         try:
             proc = psutil.Process(pid)
             cpu_sec = proc.cpu_times().user + proc.cpu_times().system
@@ -95,9 +69,8 @@ class DeviceMonitor:
             return f"[RES] psutil_error={exc}"
 
     def monitor_log(self) -> List[str]:
-        """ログファイルを監視しパターンにマッチする行とリソース統計を返す"""
         if not os.path.exists(self.log_file_path):
-            print(f"[DEBUG] Log file not found. path={self.log_file_path}")
+            print(f"[WARN] Log file not found: {self.log_file_path}")
             return []
 
         matched: List[str] = []
@@ -111,18 +84,16 @@ class DeviceMonitor:
                 if self.pattern.search(line):
                     matched.append(line.strip())
 
-        # append resource statistics if requested
         res_line = self._resource_line()
         if res_line:
             matched.append(res_line)
 
-        # update offset after reading
         self.save_offset(new_offset)
         return matched
 
 
 class MailNotifier:
-    """SMTP 経由で通知メールを送信するユーティリティ"""
+    """SMTP によるメール送信ユーティリティ"""
 
     def __init__(
         self,
