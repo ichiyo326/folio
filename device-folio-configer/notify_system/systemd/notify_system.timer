@@ -1,8 +1,0 @@
-[Unit]
-Description=Notify System Timer
-[Timer]
-OnBootSec=30
-OnUnitActiveSec=30
-Unit=notify_system.service
-[Install]
-WantedBy=multi-user.target

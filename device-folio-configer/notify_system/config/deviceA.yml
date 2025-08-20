@@ -1,4 +1,0 @@
-device_name: "deviceA"
-log_file_path: "./logs/deviceA.log"
-offset_file_path: "./offset/deviceA_offset.dat"
-pattern: "(ERROR|FAIL|DONE)"

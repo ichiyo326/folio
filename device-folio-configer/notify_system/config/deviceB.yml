@@ -1,4 +1,0 @@
-device_name: "deviceB"
-log_file_path: "/var/log/deviceB.log"
-offset_file_path: "/tmp/deviceA_offsetB.dat"
-pattern: "(Finished|Complete|STOP)"
