@@ -24,3 +24,73 @@ td,th{border:1px solid var(--border);padding:8px;text-align:left}
 ul{padding-left:20px}
 hr{border:0;border-top:1px solid var(--border);margin:24px 0}
 .small{font-size:13px;color:var(--muted)}
+
+/* COOL_MINIMAL_V1 ---------------------------------------------- */
+:root{
+  --bg:#ffffff;
+  --fg:#0a0a0a;
+  --muted:#6b7280;
+  --line:#e5e7eb;
+  --pri:#111111;         /* ボタンや強調: 黒 */
+  --acc:#0ea5e9;         /* アクセント: 淡いシアン */
+}
+body{background:var(--bg);color:var(--fg)}
+header, footer{background:#fff}
+
+/* Hero: グラデーション＋幾何装飾（写真なし） */
+.hero--minimal{
+  position:relative;
+  padding:72px 0 56px;
+  background: linear-gradient(180deg, #ffffff 0%, #f8fafc 100%);
+  overflow:hidden;
+}
+.hero--minimal .kicker{letter-spacing:.06em;color:var(--muted);font-size:13px;text-transform:uppercase}
+.hero--minimal h1{font-size:clamp(28px,5.5vw,44px);line-height:1.2;margin:12px 0 8px}
+.hero--minimal p.lead{color:#334155;max-width:60ch}
+
+/* 装飾の円／ライン（CSSだけ） */
+.hero--minimal::before,
+.hero--minimal::after{
+  content:"";
+  position:absolute;
+  pointer-events:none;
+  border-radius:999px;
+  filter: blur(24px);
+  opacity:.35;
+}
+.hero--minimal::before{
+  width:360px;height:360px; top:-120px; right:-120px;
+  background:radial-gradient(circle at 30% 30%, #e2e8f0, #ffffff 60%);
+  border:1px solid var(--line);
+}
+.hero--minimal::after{
+  width:260px;height:260px; bottom:-80px; left:-80px;
+  background:radial-gradient(circle at 70% 70%, #f1f5f9, #ffffff 60%);
+  border:1px solid var(--line);
+}
+
+/* CTA */
+.btn{
+  display:inline-block; padding:10px 14px; border-radius:10px;
+  border:1px solid var(--line); text-decoration:none; color:inherit;
+  transition:transform .2s ease, background .2s ease, box-shadow .2s ease;
+}
+.btn--dark{background:var(--pri); color:#fff; border-color:var(--pri)}
+.btn:hover{transform:translateY(-2px); box-shadow:0 6px 22px rgba(0,0,0,.06)}
+.btn:focus{outline:2px solid var(--acc); outline-offset:2px}
+
+/* カード（Projects） */
+.card{transition: transform .18s ease, box-shadow .18s ease, border-color .18s ease}
+.card:hover{transform: translateY(-3px); box-shadow:0 10px 26px rgba(0,0,0,.06); border-color:#dbe3ea}
+
+/* グリッド余白微調整 */
+.grid{gap:18px}
+@media(min-width:900px){ .grid{gap:20px} }
+
+/* セクションの下余白 */
+section{margin-bottom:28px}
+
+/* スクロールアニメ */
+.animate{opacity:0; transform:translateY(16px); transition:all .6s cubic-bezier(.2,.65,.2,1)}
+.animate.is-in{opacity:1; transform:none}
+/* --------------------------------------------------------------- */

@@ -2,7 +2,18 @@
 <html lang="en">
 <head>
   <meta charset="utf-8"/>
-  <meta name="viewport" content="width=device-width,initial-scale=1"/>
+  <meta name="viewport" content="width=device-width,initial-scale=<section class="hero hero--minimal animate">
+  <div class="wrap">
+    <div class="kicker">PORTFOLIO</div>
+    <h1>Cool & Minimal—clarity without photos.</h1>
+    <p class="lead">No photos, just type, shapes, motion, and color to communicate fast and clearly. Designed for quick evaluations and fewer misunderstandings.</p>
+    <div class="cta" style="margin-top:16px">
+      <a class="btn btn--dark" href="https://github.com/ichiyo326" target="_blank" rel="noreferrer">GitHub</a>
+      <a class="btn" href="#" target="_blank" rel="noreferrer">Resume</a>
+      <a class="btn" href="mailto:er325198s@gmail.com">Email</a>
+    </div>
+  </div>
+</section>"/>
   <title>Yuki Higuchi — Portfolio</title>
   <link rel="stylesheet" href="../assets/styles.css"/>
   <script defer src="../assets/main.js"></script>
@@ -28,9 +39,7 @@
       <a href="#" target="_blank" rel="noreferrer">Resume (PDF)</a>
       <a href="mailto:er325198s@gmail.com">Email</a>
     </div>
-  </section>
-
-  <section>
+  </section>  <section>
     <h2 class="h2">Featured Projects</h2>
     <p class="meta">See all on Projects.</p>
     <div class="grid" id="featured"></div>
@@ -38,7 +47,18 @@
       window.PATHS={DATA:'../data',LANG:'en'}
       ;(async ()=>{
         const res = await fetch('../data/projects-en.json'); const list = await res.json();
-        const top = list.slice(0,3);
+        const top = list.slice(<section class="hero hero--minimal animate">
+  <div class="wrap">
+    <div class="kicker">PORTFOLIO</div>
+    <h1>Cool & Minimal—clarity without photos.</h1>
+    <p class="lead">No photos, just type, shapes, motion, and color to communicate fast and clearly. Designed for quick evaluations and fewer misunderstandings.</p>
+    <div class="cta" style="margin-top:16px">
+      <a class="btn btn--dark" href="https://github.com/ichiyo326" target="_blank" rel="noreferrer">GitHub</a>
+      <a class="btn" href="#" target="_blank" rel="noreferrer">Resume</a>
+      <a class="btn" href="mailto:er325198s@gmail.com">Email</a>
+    </div>
+  </div>
+</section>,3);
         const grid = document.getElementById('featured');
         top.forEach(p=>{
           const el=document.createElement('article'); el.className='card';
