@@ -94,3 +94,66 @@ section{margin-bottom:28px}
 .animate{opacity:0; transform:translateY(16px); transition:all .6s cubic-bezier(.2,.65,.2,1)}
 .animate.is-in{opacity:1; transform:none}
 /* --------------------------------------------------------------- */
+
+/* ===== mixi-like recruit style ===== */
+:root{
+  --bg:#ffffff; --paper:#ffffff; --alt:#f7f8fa;
+  --text:#0a0f1a; --muted:#667085; --line:#e6e8ee; --ink:#101828;
+  --accent:#111827;
+}
+html,body{background:var(--bg);color:var(--text)}
+.wrap{padding-left:max(20px,6vw);padding-right:max(20px,6vw)}
+
+h1,h2{letter-spacing:.2px}
+.h1{font-weight:800}
+.h2{font-weight:700}
+
+/* NAV 少し軽く */
+header{background:#fff; border-bottom:1px solid var(--line);}
+
+/* HERO：中央コピー＋図形アニメーション（写真なし） */
+.hero{border:1px solid var(--line);border-radius:20px;background:#fff}
+.hero.mixi{
+  position:relative; overflow:hidden; text-align:center;
+  padding:clamp(48px,10vw,140px) 0  clamp(24px,6vw,64px);
+}
+.hero.mixi h1{
+  font-size:clamp(30px,6vw,56px);
+  line-height:1.08; margin:0 0 12px; font-weight:800;
+}
+.hero.mixi p{ max-width:70ch; margin:0 auto 20px; color:var(--muted); font-size:clamp(14px,1.8vw,18px)}
+.cta{margin-top:12px}
+.cta a{
+  border:1px solid var(--line); border-radius:14px; padding:12px 16px;
+  transition:transform .15s ease, box-shadow .15s ease, background .15s ease, border-color .15s ease;
+}
+.cta a:hover{transform:translateY(-2px); box-shadow:0 10px 30px rgba(0,0,0,.06); background:#f8fafc; border-color:#d1d5db}
+
+/* 背景図形 */
+.hero-decor{position:absolute; inset:0; z-index:0; pointer-events:none; opacity:.9}
+.decor-dot{fill:rgba(0,0,0,.035)}
+@keyframes float1{0%{transform:translate(0,0)}50%{transform:translate(10px,-6px)}100%{transform:translate(0,0)}}
+@keyframes float2{0%{transform:translate(0,0)}50%{transform:translate(-8px,8px)}100%{transform:translate(0,0)}}
+.hero-decor g:nth-of-type(1){animation:float1 8s ease-in-out infinite}
+.hero-decor g:nth-of-type(2){animation:float2 10s ease-in-out infinite}
+
+/* SECTION：白/薄グレーの交互背景 */
+main > section{padding:clamp(28px,5.5vw,64px) 0}
+main > section:nth-of-type(even){background:var(--alt); border-top:1px solid var(--line); border-bottom:1px solid var(--line)}
+section .section-title{margin:0 0 12px; font-weight:700}
+section .section-note{color:var(--muted); margin:0 0 18px}
+
+/* カード（Projectsなど） */
+.card{
+  transition:transform .18s ease, box-shadow .18s ease, border-color .18s ease;
+  border:1px solid var(--line); border-radius:16px; background:#fff;
+}
+.card:hover{ transform:translateY(-4px); box-shadow:0 14px 36px rgba(0,0,0,.08); border-color:#d1d5db }
+.tag{ background:#f6f7f9; border-color:#eceff4 }
+
+/* グリッドの余白調整 */
+.grid{gap:20px}
+
+/* スクロール演出 */
+.animate{opacity:0; transform: translateY(16px); transition: opacity .6s ease, transform .6s ease}
+.animate.show{opacity:1; transform: none}
