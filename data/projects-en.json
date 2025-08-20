@@ -3,16 +3,16 @@
     "slug": "humeia-inventory",
     "title": "Humeia Inc.",
     "period": "Oct 2023 – Mar 2024",
-    "role": "Backend (under mentor)",
-    "summary": "Built internal views to quickly identify where orders were stuck, speeding up inquiry handling.",
-    "problem": "Orders complete before stock is confirmed and many items are drop-shipped; pinpointing the cause (stock / shipping / flow) took time.",
+    "role": "Backend (with mentor guidance)",
+    "summary": "Added an internal view to quickly see where orders were stuck (stock/shipping/flow) and speed up handling.",
+    "problem": "Orders are confirmed before stock and many are drop‑shipped, so finding the cause of a stopped order took time; CS/warehouse had to hop across multiple screens; escalations to engineers were frequent.",
     "actions": [
-      "Implemented a one-page internal summary of Order → Stock → Shipping",
-      "Unified trace IDs across invoices, emails and logs",
-      "Provided a watchlist for items requiring manual confirmation (△)",
-      "Added a “first 3 checks” playbook for CS"
+      "Implemented a single screen summarizing Order→Stock→Shipping status.",
+      "Unified invoice/email/log numbers for cross‑department traceability.",
+      "Auto‑listed items that require manual stock confirmation to prevent misses.",
+      "Displayed three initial CS checks directly on the screen."
     ],
-    "result": "In a representative week, time-to-cause was ~10 minutes faster; engineering escalations dropped from 5/week to 2–3/week.",
+    "result": "In a representative week, average time‑to‑cause dropped from ~30min to ~20min; engineering escalations decreased from ~5/week to ~2–3/week.",
     "tech": [
       "Java",
       "Spring Boot",
@@ -27,7 +27,7 @@
     "links": [
       {
         "href": "https://bier.jp/",
-        "label": "Bier.jp (site)"
+        "label": "Bier.jp"
       }
     ]
   },
@@ -62,21 +62,22 @@
     "slug": "moneyforward-fy-rollover",
     "title": "Money Forward, Inc.",
     "period": "Mar – Apr 2025",
-    "role": "Intern Developer",
-    "summary": "Improved performance of fiscal year rollover to handle large datasets reliably.",
-    "problem": "Related data were queried per entry causing excessive DB calls; at scale this led to slowdowns and memory pressure.",
+    "role": "Intern Engineer",
+    "summary": "Eliminated redundant lookups in fiscal year rollover; reduced SQL from hundreds/thousands to a single bulk fetch.",
+    "problem": "When rolling the fiscal year, previous balances are carried as opening entries. Related info (accounts, partners, etc.) was queried per entry, making SQL calls scale with entries and slowing the job.",
     "actions": [
-      "Analyzed the whole flow to locate redundant lookups",
-      "Switched to bulk prefetch + in-memory cache",
-      "Introduced a feature flag for safe rollout",
-      "Measured before/after with large synthetic datasets"
+      "Traced the flow and pinpointed where repeated SQL calls occurred.",
+      "Switched to bulk prefetch with an in‑memory cache.",
+      "Introduced a feature flag to safely toggle the change.",
+      "Benchmarked 1/100/1,000 entries, comparing SQL calls and runtime."
     ],
-    "result": "Significantly fewer DB calls and shorter execution time; approach shared for reuse in similar features.",
+    "result": "Per‑entry queries collapsed into a single bulk fetch. For ~1,000 entries, SQL calls dropped from 1,000+ to 1; runtime shrank from ~30s to the teens; memory usage roughly halved.",
     "tech": [
-      "Ruby on Rails",
+      "Rails",
       "PostgreSQL",
+      "RSpec (measurement)",
       "Docker",
-      "RSpec"
+      "GitHub"
     ],
     "tags": [
       "Performance",
@@ -89,15 +90,15 @@
     "slug": "fujitsu-japan-platform",
     "title": "Fujitsu Japan",
     "period": "Apr – May 2025",
-    "role": "Deployment support & testing",
-    "summary": "Prototyped automation for common platform rollout and clarified stabilization directions.",
-    "problem": "Complex, environment-dependent steps led to intermittent stops and low reproducibility.",
+    "role": "Deployment Support (Intern)",
+    "summary": "Assisted rollout of a common platform: handled deploy/config/verify and standardized steps.",
+    "problem": "Minor mistakes or order dependencies in the rollout often caused the process to stop mid‑way across environments; consistent results required unified steps.",
     "actions": [
-      "Outlined deploy→configure→verify flow and added error tolerance",
-      "Defined configs in YAML and tested automation",
-      "Analyzed order dependencies (e.g., locale) and proposed improvements"
+      "Executed the end‑to‑end flow to find where failures occurred.",
+      "Standardized repeated operations so anyone could reproduce the same result.",
+      "From case studies, found locale timing impacted success; proposed step re‑ordering."
     ],
-    "result": "Full stability not reached yet, but causes and next steps were made clear for further rollout.",
+    "result": "Full automation wasn’t reached yet, but failure‑prone steps and cautions were clarified, forming a basis for next improvements.",
     "tech": [
       "Azure",
       "YAML"
@@ -106,11 +107,33 @@
       "Platform",
       "Automation"
     ],
-    "links": [
-      {
-        "href": "../../certs/Fujitsu Professional Internship 2024_certificate.pdf",
-        "label": "Certificate (PDF)"
-      }
-    ]
+    "links": []
+  },
+  {
+    "slug": "yui-consulting",
+    "title": "Yui Consulting",
+    "period": "Sep 2024 – Dec 2024",
+    "role": "Solo",
+    "summary": "Migrated a medical fee printing feature from Access to DRS; built mappings and converters to match numbers and layout.",
+    "problem": "Access reports used proprietary layouts that couldn’t be reproduced as‑is in DRS. Code/master differences risked numeric mismatches, and no migration procedures/tools existed.",
+    "actions": [
+      "Created a 1:1 field mapping between Access and DRS, defining required fields, code conversion, and length constraints.",
+      "Developed converters: extracted source via Access VBA, implemented a production C#/.NET program; normalized wide/halfwidth and date formats; made reruns idempotent.",
+      "Validated printing via a prepared template: checked page breaks/margins in PDF & printer output; verified counts/amounts with a checker."
+    ],
+    "result": "Counts and amounts matched between Access and DRS outputs; page breaks/margins matched in both PDF and paper. The program and mappings remain reusable for other report migrations.",
+    "tech": [
+      "C# (.NET)",
+      "VBA (Access)",
+      "Excel",
+      "Access",
+      "PDF/Printer validation"
+    ],
+    "tags": [
+      "Data Migration",
+      "Healthcare",
+      "Reports"
+    ],
+    "links": []
   }
 ]
