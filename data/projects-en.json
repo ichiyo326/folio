@@ -108,5 +108,40 @@
       "Reports"
     ],
     "links": []
+  },
+  {
+    "slug": "bom-rn",
+    "title": "Bongakuro Match Tracker (React Native)",
+    "period": "Jan 2025 – (Personal)",
+    "role": "Solo Developer",
+    "summary": "A mobile app (iOS/Android) to record and analyze Bomber Girl match results: stage, role, character, win/lose, location (arcade/Konaste), and match type.",
+    "problem": "iOS players lacked a lightweight way to log and visualize match results, making review and sharing difficult.",
+    "actions": [
+      "Implemented mobile UI with React Native + Expo (Record / History / Stats / Settings)",
+      "Used AsyncStorage for local persistence with future-friendly design for export/backup",
+      "Added settings to toggle draw visibility and win rate display for flexible views"
+    ],
+    "result": "Enables quick post-match logging and on-device stats. Next steps include export/backup and richer analytics.",
+    "tech": [
+      "React Native",
+      "Expo",
+      "TypeScript",
+      "AsyncStorage"
+    ],
+    "tags": [
+      "Mobile",
+      "React Native",
+      "Expo"
+    ],
+    "links": [
+      {
+        "href": "https://github.com/ichiyo326/bom-rn",
+        "label": "GitHub (README)"
+      }
+    ],
+    "images": [
+      "assets/images/projects/bom-rn/bomcro1.png",
+      "assets/images/projects/bom-rn/bomcro2.png"
+    ]
   }
 ]

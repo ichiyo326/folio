@@ -108,5 +108,40 @@
       "Reports"
     ],
     "links": []
+  },
+  {
+    "slug": "bom-rn",
+    "title": "ボンガクロ戦績記録アプリ（React Native）",
+    "period": "2025.01–（個人開発）",
+    "role": "個人開発",
+    "summary": "ボンバーガールの戦績を記録・集計するiOS/Android向けアプリ。ステージ・ロール・キャラ・勝敗・プレイ場所・マッチタイプを登録でき、履歴・編集・削除・集計・設定を提供。",
+    "problem": "iOSユーザーが手軽に戦績を記録・可視化できるアプリが少なく、プレイの振り返りや共有がしにくかった。",
+    "actions": [
+      "React Native + ExpoでモバイルUIを実装（記録・履歴・集計・設定の各画面）",
+      "データ保持にAsyncStorageを採用、将来のエクスポート/バックアップ拡張を見据えて設計",
+      "設定で引き分け表示や勝率表示のON/OFFを切替可能にし、利用者ごとの好みに合わせて表示を最適化"
+    ],
+    "result": "端末内で戦績の登録・編集・集計ができ、プレイ後の振り返りが容易に。今後はエクスポート/バックアップや集計の拡充に対応予定。",
+    "tech": [
+      "React Native",
+      "Expo",
+      "TypeScript",
+      "AsyncStorage"
+    ],
+    "tags": [
+      "Mobile",
+      "React Native",
+      "Expo"
+    ],
+    "links": [
+      {
+        "href": "https://github.com/ichiyo326/bom-rn",
+        "label": "GitHub（README）"
+      }
+    ],
+    "images": [
+      "assets/images/projects/bom-rn/bomcro1.png",
+      "assets/images/projects/bom-rn/bomcro2.png"
+    ]
   }
 ]
