@@ -32,33 +32,6 @@
     ]
   },
   {
-    "slug": "yui-consulting-drs",
-    "title": "Yui Consulting",
-    "period": "Sep 2024 – (ongoing)",
-    "role": "Solo developer",
-    "summary": "Migrated medical fee printing from Access to DRS with accurate layout and figures.",
-    "problem": "Access-specific layouts can’t be reproduced as-is in DRS; code/master differences risked numeric mismatches; no migration assets existed.",
-    "actions": [
-      "Created a mapping table between Access and DRS fields/codes",
-      "Prototyped extraction in VBA, built production migration in C#/.NET with format conversions",
-      "Validated layout via PDF/printer tests and consistency scripts"
-    ],
-    "result": "Cut-over completed on schedule; stable operation after go-live; assets reusable for other features.",
-    "tech": [
-      "C#",
-      ".NET",
-      "VBA",
-      "Excel",
-      "Access"
-    ],
-    "tags": [
-      "Data Migration",
-      "Healthcare",
-      "Reports"
-    ],
-    "links": []
-  },
-  {
     "slug": "moneyforward-fy-rollover",
     "title": "Money Forward, Inc.",
     "period": "Mar – Apr 2025",

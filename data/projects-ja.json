@@ -32,33 +32,6 @@
     ]
   },
   {
-    "slug": "yui-consulting-drs",
-    "title": "油井コンサルティング",
-    "period": "2024.09–（継続）",
-    "role": "単独担当",
-    "summary": "Accessの医療点数印刷機能をDRSへ0から移行。数値ズレ・レイアウト崩れなく安定稼働。",
-    "problem": "Access独自帳票はDRSでそのまま再現不可。点数マスタ差異で数値ズレのリスク。移行手順・資産が未整備。",
-    "actions": [
-      "AccessとDRSの項目・コードを照合するマッピング表を作成",
-      "VBAで抽出・試作、C#/.NETで本番移行処理を実装（書式変換含む）",
-      "帳票テンプレート＋PDF/プリンタでレイアウト検証、件数一致の検証スクリプトを整備"
-    ],
-    "result": "予定時間内に切替完了。移行後も安定稼働。マッピング表・スクリプト・テンプレートは他機能移行にも再利用可能。",
-    "tech": [
-      "C#",
-      ".NET",
-      "VBA",
-      "Excel",
-      "Access"
-    ],
-    "tags": [
-      "Data Migration",
-      "Healthcare",
-      "Reports"
-    ],
-    "links": []
-  },
-  {
     "slug": "moneyforward-fy-rollover",
     "title": "株式会社マネーフォワード",
     "period": "2025.03–04",
